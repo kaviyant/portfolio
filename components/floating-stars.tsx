@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 
 interface Star {
   id: number
@@ -12,6 +13,12 @@ interface Star {
 }
 
 export function FloatingStars() {
+  const [windowHeight, setWindowHeight] = useState(1000)
+
+  useEffect(() => {
+    setWindowHeight(window.innerHeight)
+  }, [])
+
   // Generate random floating stars
   const floatingStars: Star[] = Array.from({ length: 20 }, (_, i) => ({
     id: i,
@@ -71,7 +78,7 @@ export function FloatingStars() {
             boxShadow: `0 0 ${star.size * 1.5}px rgba(180, 85, 255, 0.4)`,
           }}
           animate={{
-            y: [0, window.innerHeight + 100],
+            y: [0, windowHeight + 100],
             opacity: [0, 0.6, 0],
             x: [0, Math.random() * 50 - 25],
           }}
