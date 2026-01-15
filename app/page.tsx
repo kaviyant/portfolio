@@ -46,11 +46,11 @@ const services = [
   },
 ]
 
-const stats = []
+const stats: { label: string; value: string }[] = []
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="flex-1 bg-background relative flex flex-col">
       <FloatingStars />
 
       {/* Hero Section */}

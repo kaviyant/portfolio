@@ -45,7 +45,7 @@ const experience = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-card/20 pt-20 pb-16">
+    <div className="flex-1 bg-gradient-to-b from-background via-background to-card/20 pt-20 pb-16">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div className="mb-16 space-y-4" variants={staggerContainer} initial="initial" animate="animate">

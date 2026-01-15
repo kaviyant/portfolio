@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Kaviyan T - Full Stack Developer",
   description:
     "Building fast, clean, intelligent digital experiences. Full Stack Developer, App Developer, Competitive Programmer.",
-  
+
   keywords: ["fullstack", "developer", "portfolio", "web", "mobile", "flutter"],
   authors: [{ name: "Kaviyan T" }],
   openGraph: {
@@ -49,10 +49,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geist.className} font-sans antialiased`}>
+      <body className={`${geist.className} font-sans antialiased flex flex-col min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Navbar />
-          <main className="min-h-screen">{children}</main>
+          <main className="flex-1 flex flex-col">{children}</main>
           <Footer />
         </ThemeProvider>
         <Analytics />

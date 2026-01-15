@@ -18,7 +18,7 @@ export default function ProjectsPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-card/20 pt-20 pb-16">
+    <div className="flex-1 bg-gradient-to-b from-background via-background to-card/20 pt-20 pb-16">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div className="mb-12 space-y-4" variants={staggerContainer} initial="initial" animate="animate">
@@ -37,11 +37,10 @@ export default function ProjectsPage() {
             <motion.button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-lg font-medium transition-smooth ${
-                selectedCategory === category
+              className={`px-4 py-2 rounded-lg font-medium transition-smooth ${selectedCategory === category
                   ? "bg-accent text-accent-foreground"
                   : "glass border border-accent/30 text-foreground hover:border-accent/60"
-              }`}
+                }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
