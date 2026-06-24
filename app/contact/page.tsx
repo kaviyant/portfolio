@@ -16,7 +16,7 @@ const contactMethods = [
     icon: Phone,
     label: "Phone",
     value: "+91 8668115816",
-    href: "tel:918668115816",
+    href: "tel:8668115816",
   },
   {
     icon: MapPin,
