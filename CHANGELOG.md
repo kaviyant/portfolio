@@ -1,0 +1,33 @@
+# Changelog
+
+All notable changes will be documented here.
+
+## [v1.0.0] - 2026-06-24
+
+# Release Notes
+## Executive Summary / Highlights
+This release includes a bug fix to update the phone number in the contact methods to include the country code, ensuring correct functionality when clicking the phone number link.
+
+## Features
+No new features are introduced in this release.
+
+## Bug Fixes
+### User Interface
+* Updated the phone number in the contact methods to include the country code.
+  Evidence:
+    - Commit: 107a773bcd77b9d1f6e643d239da50f5ef183b76
+    - Files: app/contact/page.tsx
+    - Diff: The phone number in the contact methods was updated to include the country code.
+    - Confidence: 95%
+
+## Security Updates
+No security updates are included in this release.
+
+## Performance Improvements
+No performance improvements are included in this release.
+
+## CI/CD & Infrastructure Changes
+No CI/CD or infrastructure changes are included in this release.
+
+## Risk Profile & Deploy Recommendations
+The risk profile for this release is classified as Low, with a risk score of 10 and a confidence score of 90.0%. The affected module is the User Interface. Recommended testing includes unit testing, integration testing, and user acceptance testing. Potential failures may include user interface issues and minor functionality problems. It is recommended to deploy this release with caution and monitor for any issues related to the User Interface module.
