@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Navbar Monogram Card Base -->
+  <rect x="5" y="6" width="52" height="52" rx="14" fill="#16181F" stroke="rgba(255, 255, 255, 0.16)" stroke-width="1.8" />
+  
+  <!-- Subtle Top Highlight -->
+  <rect x="6.5" y="7.5" width="49" height="24" rx="12" fill="white" opacity="0.04" />
+
+  <!-- Monogram KT Typography -->
+  <text x="17" y="42" font-family="'JetBrains Mono', 'Consolas', 'Courier New', monospace" font-size="24" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">K</text>
+  <text x="33" y="42" font-family="'JetBrains Mono', 'Consolas', 'Courier New', monospace" font-size="24" font-weight="800" fill="#C6FF4D" letter-spacing="-0.5">T</text>
+
+  <!-- Glowing Top-Right Notification Dot -->
+  <circle cx="52" cy="10" r="6" fill="#C6FF4D" opacity="0.4" filter="url(#neon-glow)" />
+  <circle cx="52" cy="10" r="3.2" fill="#C6FF4D" />
+</svg>
