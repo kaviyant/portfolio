@@ -149,8 +149,8 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Right: Custom High-Tech Mockup Visual Interface */}
-                <div className="lg:col-span-6 min-w-0 w-full">
+                {/* Right: Custom High-Tech Mockup Visual Interface (Desktop only) */}
+                <div className="hidden lg:block lg:col-span-6 min-w-0 w-full">
                   <div className="rounded-2xl border border-white/15 bg-[#0A0C0F] p-4 sm:p-5 relative shadow-2xl overflow-hidden group-hover:border-[#C6FF4D]/30 transition-colors">
                     {/* Top simulated window bar */}
                     <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 font-mono text-[10px] sm:text-[11px] text-[#71717A]">

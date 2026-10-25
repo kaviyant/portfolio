@@ -26,8 +26,8 @@ export default function Hero3D() {
     }
 
     // Three.js Scene Setup based on container dimensions
-    let width = container.clientWidth || 320;
-    let height = container.clientHeight || 280;
+    let width = container.clientWidth || window.innerWidth;
+    let height = container.clientHeight || window.innerHeight;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
@@ -46,16 +46,23 @@ export default function Hero3D() {
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
-    // Responsive planetary scale
+    // Responsive planetary positioning and scale
     const updatePositioning = (w: number) => {
-      mainGroup.position.set(0, 0, 0);
       if (w >= 1024) {
+        // Desktop: Position planetary center to the right so it balances headline text
+        mainGroup.position.set(1.35, 0.05, 0);
         mainGroup.scale.setScalar(1.15);
       } else if (w >= 768) {
+        // Tablet: Slightly right of center
+        mainGroup.position.set(0.45, 0.05, 0);
         mainGroup.scale.setScalar(1.05);
       } else if (w >= 480) {
+        // Large mobile: Centered in background behind the text
+        mainGroup.position.set(0, 0.1, 0);
         mainGroup.scale.setScalar(0.95);
       } else {
+        // Small mobile (<480px): Centered in background behind the text
+        mainGroup.position.set(0, 0.08, 0);
         mainGroup.scale.setScalar(0.85);
       }
     };
@@ -68,7 +75,7 @@ export default function Hero3D() {
       color: 0xc6ff4d, // electric lime
       wireframe: true,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.82,
     });
     const wireframeMesh = new THREE.Mesh(coreGeometry, wireframeMaterial);
     mainGroup.add(wireframeMesh);
@@ -89,7 +96,7 @@ export default function Hero3D() {
       color: 0x55d6d0, // muted cyan
       wireframe: true,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.62,
     });
     const innerMesh = new THREE.Mesh(innerGeometry, innerMaterial);
     mainGroup.add(innerMesh);
@@ -126,7 +133,7 @@ export default function Hero3D() {
       size: isMobile ? 0.065 : 0.05,
       vertexColors: true,
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.88,
       blending: THREE.AdditiveBlending,
     });
 
@@ -138,7 +145,7 @@ export default function Hero3D() {
     const ringMat1 = new THREE.MeshBasicMaterial({
       color: 0xc6ff4d,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.65,
       side: THREE.DoubleSide,
     });
     const ringMesh1 = new THREE.Mesh(ringGeo1, ringMat1);
@@ -150,7 +157,7 @@ export default function Hero3D() {
     const ringMat2 = new THREE.MeshBasicMaterial({
       color: 0x55d6d0,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.5,
       side: THREE.DoubleSide,
     });
     const ringMesh2 = new THREE.Mesh(ringGeo2, ringMat2);
@@ -172,25 +179,23 @@ export default function Hero3D() {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0 && container) {
+      if (e.touches.length > 0) {
         const touch = e.touches[0];
-        const rect = container.getBoundingClientRect();
-        const x = (touch.clientX - rect.left) / rect.width - 0.5;
-        const y = (touch.clientY - rect.top) / rect.height - 0.5;
-        targetRotationY = x * 1.6;
-        targetRotationX = y * 1.6;
+        const x = touch.clientX / window.innerWidth - 0.5;
+        const y = touch.clientY / window.innerHeight - 0.5;
+        targetRotationY = x * 1.4;
+        targetRotationX = y * 1.4;
       }
     };
 
     window.addEventListener("mousemove", handlePointerMove, { passive: true });
-    container.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
 
     // Resize handler
     const handleResize = () => {
       if (!container) return;
-      const rect = container.getBoundingClientRect();
-      width = rect.width || container.clientWidth || 320;
-      height = rect.height || container.clientHeight || 280;
+      width = container.clientWidth || window.innerWidth;
+      height = container.clientHeight || window.innerHeight;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
@@ -246,7 +251,7 @@ export default function Hero3D() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handlePointerMove);
       window.removeEventListener("resize", handleResize);
-      container.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchmove", handleTouchMove);
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
@@ -269,7 +274,7 @@ export default function Hero3D() {
   return (
     <div
       ref={mountRef}
-      className="w-full h-full min-h-[260px] xs:min-h-[290px] sm:min-h-[340px] lg:min-h-[480px] flex items-center justify-center select-none relative overflow-hidden"
+      className="absolute inset-0 w-full h-full flex items-center justify-center select-none pointer-events-none overflow-hidden z-0"
     >
       {/* Fallback for when WebGL is unavailable */}
       {!hasWebGL && (
